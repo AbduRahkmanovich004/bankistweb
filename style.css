@@ -121,7 +121,7 @@
     width: 100%;
     padding: 0 6rem;
     z-index: 100;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     background:  #f3f3f3;
   }
@@ -675,12 +675,6 @@
     font-size: 1.5rem;
     font-weight: 400;
   }
-  .nav__links:hover > li{
-    opacity: 0.4;
-  }
-  ul > li:hover{
-    opacity: 1 !important;
-  }
   .cookie{
     position: fixed;
     bottom: 0;
@@ -703,4 +697,10 @@
     width: 8rem;
     height: 3rem;
     border-radius: 5rem;
+  }
+  .nav__links:hover > li{
+    opacity: 0.4;
+  }
+  ul > li:hover{
+    opacity: 1 !important;
   }
