@@ -50,3 +50,53 @@ tabsContainer.addEventListener("click", (e) => {
     tabsContent[date-1].classList.add("operations__content--active")
   }
 });
+
+
+
+// for navbar sitiky
+let header = document.querySelector("header")
+let stiky = (entries , observe/*, observer*/) => {
+  console.log();
+  let arrayObs = entries[0]
+  if(!arrayObs.isIntersecting) nav.classList.add("sticky")
+  else nav.classList.remove("sticky")
+};
+let options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.14,
+};
+let fixed = new IntersectionObserver(stiky, options);
+fixed.observe(header);
+
+
+
+
+
+
+
+
+
+
+
+// for animate sections
+
+const allSections = document.querySelectorAll('.section, footer');
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  console.log(entry.target);
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+  });
