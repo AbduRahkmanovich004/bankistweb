@@ -15,20 +15,24 @@ cookie.addEventListener("click", () => {
 });
 
 // for Modal
-const ModalOpen = function (e) {
-  e.preventDefault();
+const ModalOpen = function () {
   modal.classList.remove("hidden");
+  modal.classList.remove("hiddenMedia");
   overlay.classList.remove("hidden");
+  overlay.classList.remove("hiddenMedia");
 };
 const ModalCloe = function () {
-  modal.classList.add("hidden");
   overlay.classList.add("hidden");
+  overlay.classList.add("hiddenMedia");
+  modal.classList.add("hidden");
+  modal.classList.add("hiddenMedia");
 };
 btnsOpenModal.forEach((btn) => btn.addEventListener("click", ModalOpen));
 btnCloseModal.addEventListener("click", ModalCloe);
-overlay.addEventListener("click", () => {
-  navLink.style.display = "none";
+
+overlay.addEventListener("click", ()=>{
   ModalCloe();
+  navLinkUl.classList.add("hiddenMedia")
 });
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
@@ -95,19 +99,34 @@ allSections.forEach(function (section) {
 // for burger
 const burger = document.querySelector(".logo_svg");
 const navLink = document.querySelector(".nav__links");
-const navLinkUl = document.querySelectorAll(".nav__links li");
+const navLinkUl = document.querySelector("ul");
+console.log(burger.style.zIndex);
 burger.addEventListener("click", () => {
-  navLink.style.display = "flex";
-  overlay.classList.remove("hidden");
+  navLinkUl.classList.remove("hiddenMedia");
+  overlay.classList.remove("hiddenMedia");
+  overlay.classList.remove("hiddenMedia");
 });
-navLinkUl.forEach((e) => {
-  e.addEventListener("click", () => {
-    if(navLink.style.gap)
-    navLink.style.display = "none";
-    overlay.classList.add("hidden");
-  });
+navLinkUl.addEventListener("click", () => {
+  navLinkUl.classList.add("hiddenMedia");
+  overlay.classList.add("hiddenMedia");
+  overlay.classList.add("hiddenMedia");
 });
-//////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////
 // slides
 const slides = document.querySelectorAll(".slide");
 const slideBtnRight = document.querySelector(".slider__btn--right");
@@ -143,7 +162,6 @@ const activateDot = function (slide) {
     .querySelector(`.dots__dot[data-slide="${slide}"]`)
     .classList.add("dots__dot--active");
 };
-
 //Next Slide
 const nextSlide = function () {
   if (currentSlide === maxSlide - 1) {
@@ -172,17 +190,15 @@ dotContainer.addEventListener("click", function (e) {
     activateDot(slide);
   }
 });
-
 // listenerlar
 slideBtnLeft.addEventListener("click", nextSlide);
 slideBtnRight.addEventListener("click", prevSlide);
-
+setInterval(nextSlide, 3000);
 // Keyboard control
 document.addEventListener("keydown", function (e) {
   if (e.key === "ArrowRight") nextSlide();
   if (e.key === "ArrowLeft") prevSlide();
 });
-
 const begin = function () {
   goToSlide(0);
   createDots();
@@ -197,7 +213,6 @@ const handleTouchStart = (e) => {
 const handleTouchMove = (e) => {
   touchEndX = e.touches[0].clientX;
 };
-
 const handleTouchEnd = () => {
   const touchDiff = touchStartX - touchEndX;
   if (touchDiff > 50) {

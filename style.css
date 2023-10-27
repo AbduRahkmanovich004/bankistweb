@@ -754,7 +754,7 @@ ul>li:hover {
 
 
   .nav__links {
-    display: none;
+    display: flex;
     flex-direction: column;
     background: var(--color-secondary);
     top: 6rem;
@@ -765,6 +765,9 @@ ul>li:hover {
     transform: scale(1.4);
     border-radius: 2rem 0;
     z-index: 100 !important;
+  }
+  .hiddenMedia{
+    display: none;
   }
 
   .nav .logo_svg {
@@ -787,6 +790,9 @@ ul>li:hover {
 
   .header__title button {
     display: block;
+  }
+  .burger{
+    z-index: 99;
   }
 
   .header__img {
